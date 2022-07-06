@@ -16,7 +16,6 @@ export const SigninWithGoogle = () => async (dispatch) => {
     });
 
     try {
-        
         const { idToken } = await GoogleSignin.signIn();
         const credential = auth.GoogleAuthProvider.credential(
             idToken,
