@@ -1,11 +1,11 @@
-import { SafeAreaView, StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TextInput, Image, TouchableOpacity, StatusBar } from 'react-native'
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { SigninWithGoogle } from '../../redux/action/auth_action';
 
-const Login = () => {
+const Login = ({navigation}) => {
 
 
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const Login = () => {
                 <View style={styles.imageContiner}>
                     <View style={{ alignContent: 'center' }}>
                         {/* <View style={{}}> */}
-                        <Image style={styles.image1} source={require('../../images/1.jpg')} />
+                            <Image style={styles.image1} source={require('../../images/1.jpg')} />
                         {/* </View> */}
                         <Image style={styles.image2} source={require('../../images/1.jpg')} />
                     </View>
@@ -40,7 +40,7 @@ const Login = () => {
                     placeholder={'Password'}
                     placeholderTextColor={'#666666'}
                 />
-                <TouchableOpacity style={styles.btnView}>
+                <TouchableOpacity style={styles.btnView} onPress={() => navigation.navigate('Home')}>
                     <Text style={styles.createBtnText}>Let's create</Text>
                 </TouchableOpacity>
 
@@ -63,6 +63,7 @@ const Login = () => {
                     <Text style={{ top: 20, position: 'absolute', color: 'blue' }} > Create new account</Text>
                 </TouchableOpacity>
             </View>
+            <StatusBar backgroundColor={'#ffffff'} barStyle={'dark-content'} />
         </SafeAreaView>
     )
 }
